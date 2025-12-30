@@ -1,13 +1,14 @@
-﻿#pragma once
+#pragma once
 #include "Component.h"
 #include <vector>
 #include "IEventListener.h"
-#include "Reflection.h"
 
 class RectTransformComponent;
 
 class UIComponent : public Component, public IEventListener
 {
+	friend class Property;
+	template<typename, typename> friend class MemberProperty;
 public:
 	static constexpr const char* StaticTypeName = "UIComponent";
 	const char* GetTypeName() const override; // 매크로에서 정의 및 사용
@@ -24,4 +25,3 @@ protected:
 	float m_Opacity = 1.0f;
 };
 
-REGISTER_COMPONENT(UIComponent);

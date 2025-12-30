@@ -1,8 +1,8 @@
-﻿#pragma once
+#pragma once
 #include "Component.h"
 #include "RenderData.h"
-#include "Reflection.h"
 using namespace RenderData;
+
 
 class LightComponent : public Component
 {
@@ -60,5 +60,5 @@ protected:
 	BOOL       m_CastShadow = true;
 };
 
-REGISTER_COMPONENT(LightComponent);
+
 

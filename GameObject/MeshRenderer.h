@@ -1,7 +1,7 @@
-﻿#pragma once
+#pragma once
 #include "Component.h"
 #include "RenderData.h"
-#include "Reflection.h"
+
 class TransformComponent;
 
 class MeshRenderer : public Component

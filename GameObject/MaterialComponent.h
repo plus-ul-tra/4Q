@@ -1,10 +1,13 @@
-﻿#pragma once
+#pragma once
 #include "Component.h"
 #include "RenderData.h"
+
 
 class MaterialComponent : public Component
 {
 	friend class Editor;
+	friend class Property;
+	template<typename, typename> friend class MemberProperty;
 public:
 
 	static constexpr const char* StaticTypeName = "MaterialComponent";
@@ -33,5 +36,5 @@ protected:
 	bool m_UseOverrides = false;
 };
 
-//REGISTER_COMPONENT(MaterialComponent);
+
 

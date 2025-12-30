@@ -79,6 +79,9 @@
     <ClInclude Include="Reflection.h">
       <Filter>Reflection</Filter>
     </ClInclude>
+    <ClInclude Include="ReflectionMacro.h">
+      <Filter>Reflection</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Components">

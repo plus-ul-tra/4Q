@@ -1,8 +1,9 @@
-﻿#include "TransformComponent.h"
+#include "TransformComponent.h"
 #include "Event.h"
 #include <cassert>
-#include "Reflection.h"
+#include "ReflectionMacro.h"
 
+REGISTER_COMPONENT(TransformComponent)
 
 void TransformComponent::SetParent(TransformComponent* newParent)
 {
@@ -181,5 +182,8 @@ void TransformComponent::UpdateMatrices()
 
 	m_IsDirty = false;
 }
-REGISTER_COMPONENT(TransformComponent)
-REGISTER_PROPERTY(TransformComponent, posX);
+
+void LinkEngineComponents()
+{
+	// 비워도 됨
+}

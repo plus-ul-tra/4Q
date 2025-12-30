@@ -1,7 +1,6 @@
-﻿#pragma once
+#pragma once
 #include "Component.h"
 #include "MathHelper.h"
-#include "Reflection.h"
 using namespace MathUtils;
 
 enum class TransformPivotPreset
@@ -14,13 +13,11 @@ enum class TransformPivotPreset
 class TransformComponent : public Component
 {
 	friend class Editor;
-	// private 변수 접근을 위해
-	friend class Property;
-	template<typename, typename> friend class MemberProperty;
+	
 public:
 
 	static constexpr const char* StaticTypeName = "TransformComponent";
-	const char* GetTypeName() const override;// 매크로에서 정의 및 사용
+	const char* GetTypeName() const override;
 
 	TransformComponent() : Component(), m_Position(0, 0, 0), m_Rotation(0, 0, 0, 0), m_Scale(1, 1, 1), m_IsDirty(false), m_Parent(nullptr)
 	{
@@ -78,7 +75,7 @@ public:
 		return m_Children;
 	}
 	bool m_IsDirty = true;
-	float posX = 0.0f;
+	
 private:
 	void SetDirty()
 	{
@@ -90,7 +87,7 @@ private:
 	}
 
 	void UpdateMatrices();
-
+	
 private:
 	XMFLOAT3 m_Position = { 0.0f, 0.0f, 0.0f };
 	XMFLOAT4 m_Rotation = { 0.0f, 0.0f, 0.0f, 0.0f };
@@ -103,10 +100,10 @@ private:
 
 	XMFLOAT4X4 m_LocalMatrix;
 	XMFLOAT4X4 m_WorldMatrix;
-
+	float posX = 0.0f;
 	
-
 };
 
+//REGISTER_PROPERTY (TransformComponent, posX)
 
 

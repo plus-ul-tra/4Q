@@ -1,7 +1,7 @@
-﻿#include "pch.h"
+#include "pch.h"
 #include "GameApplication.h"
 #include "GameObject.h"
-
+#include "Reflection.h"
 #include <imgui.h>
 #include <imgui_impl_dx11.h>
 #include <imgui_impl_win32.h>
@@ -93,6 +93,8 @@ void GameApplication::UpdateLogic()
 void GameApplication::Update()
 {
 #ifndef _EDITOR
+	//std::cout << "run" << std::endl;
+	ComponentRegistry::Instance().Check();
 	m_SceneManager.Update(m_Engine.GetTimer().DeltaTime());
 	m_SoundManager.Update();
 	// FixedUpdate

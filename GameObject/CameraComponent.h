@@ -1,7 +1,6 @@
-﻿#pragma once
+#pragma once
 #include "Component.h"
 #include "MathHelper.h"
-#include "Reflection.h"
 using namespace MathUtils;
 
 enum class ProjectionMode
@@ -108,5 +107,3 @@ public:
 	void SetViewportSize      (float width, float height);
 
 };
-
-REGISTER_COMPONENT(CameraComponent);
