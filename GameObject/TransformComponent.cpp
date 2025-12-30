@@ -1,6 +1,8 @@
 ﻿#include "TransformComponent.h"
 #include "Event.h"
 #include <cassert>
+#include "Reflection.h"
+
 
 void TransformComponent::SetParent(TransformComponent* newParent)
 {
@@ -122,6 +124,8 @@ void TransformComponent::SetPivotPreset(TransformPivotPreset preset, const XMFLO
 
 void TransformComponent::Update(float deltaTime)
 {
+
+
 }
 
 void TransformComponent::OnEvent(EventType type, const void* data)
@@ -177,3 +181,5 @@ void TransformComponent::UpdateMatrices()
 
 	m_IsDirty = false;
 }
+REGISTER_COMPONENT(TransformComponent)
+REGISTER_PROPERTY(TransformComponent, posX);

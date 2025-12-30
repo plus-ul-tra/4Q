@@ -1,14 +1,14 @@
 ﻿#pragma once
 #include "Component.h"
 #include "ResourceHandle.h"
-
+#include "Reflection.h"
 class MeshComponent : public Component
 {
 	friend class Editor;
 
 public:
 	static constexpr const char* StaticTypeName = "MeshComponent";
-	const char* GetTypeName() const override { return StaticTypeName; }
+	const char* GetTypeName() const override; // 매크로에서 정의 및 사용
 
 	MeshComponent() = default;
 	virtual ~MeshComponent() = default;

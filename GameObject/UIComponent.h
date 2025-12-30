@@ -2,7 +2,7 @@
 #include "Component.h"
 #include <vector>
 #include "IEventListener.h"
-
+#include "Reflection.h"
 
 class RectTransformComponent;
 
@@ -10,7 +10,7 @@ class UIComponent : public Component, public IEventListener
 {
 public:
 	static constexpr const char* StaticTypeName = "UIComponent";
-	const char* GetTypeName() const override { return StaticTypeName; }
+	const char* GetTypeName() const override; // 매크로에서 정의 및 사용
 
 	void Update(float deltaTime) override;
 	void OnEvent(EventType type, const void* data) override;

@@ -1,6 +1,6 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 
-// ¹Ì¸® ÄÄÆÄÀÏµÈ Çì´õ¸¦ »ç¿ëÇÏ´Â °æ¿ì ÄÄÆÄÀÏÀÌ ¼º°øÇÏ·Á¸é ÀÌ ¼Ò½º ÆÄÀÏÀÌ ÇÊ¿äÇÕ´Ï´Ù.
+// ë¯¸ë¦¬ ì»´íŒŒì¼ëœ í—¤ë”ë¥¼ ì‚¬ìš©í•˜ëŠ” ê²½ìš° ì»´íŒŒì¼ì´ ì„±ê³µí•˜ë ¤ë©´ ì´ ì†ŒìŠ¤ íŒŒì¼ì´ í•„ìš”í•©ë‹ˆë‹¤.
 // Direct3D & DXGI
 #pragma comment(lib, "d3d11.lib")
 #pragma comment(lib, "dxgi.lib")

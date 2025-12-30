@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "Component.h"
 #include "MathHelper.h"
+#include "Reflection.h"
 using namespace MathUtils;
 
 enum class ProjectionMode
@@ -76,7 +77,7 @@ public:
 	virtual ~CameraComponent() = default;
 
 	static constexpr const char* StaticTypeName = "CameraComponent";
-	const char* GetTypeName() const override { return StaticTypeName; }
+	const char* GetTypeName() const override;// 매크로에서 정의 및 사용
 
 	void Update (float deltaTime) override;
 	void OnEvent(EventType type, const void* data) override;

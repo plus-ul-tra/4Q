@@ -8,7 +8,7 @@ class MaterialComponent : public Component
 public:
 
 	static constexpr const char* StaticTypeName = "MaterialComponent";
-	const char* GetTypeName() const override { return StaticTypeName; }
+	const char* GetTypeName() const override; // 매크로에서 정의 및 사용
 
 	MaterialComponent() = default;
 	virtual ~MaterialComponent() = default;
@@ -33,5 +33,5 @@ protected:
 	bool m_UseOverrides = false;
 };
 
-REGISTER_COMPONENT(MaterialComponent);
+//REGISTER_COMPONENT(MaterialComponent);
 

@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "Component.h"
 #include "RenderData.h"
+#include "Reflection.h"
 using namespace RenderData;
 
 class LightComponent : public Component
@@ -9,7 +10,7 @@ class LightComponent : public Component
 public:
 
 	static constexpr const char* StaticTypeName = "LightComponent";
-	const char* GetTypeName() const override { return StaticTypeName; }
+	const char* GetTypeName() const override; // 매크로에서 정의 및 사용
 
 	LightComponent();
 	virtual ~LightComponent() = default;

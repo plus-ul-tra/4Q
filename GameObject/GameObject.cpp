@@ -104,6 +104,9 @@ void GameObject::Serialize(nlohmann::json& j) const
 				comp->Serialize(compJson["data"]);
 				j["components"].push_back(compJson);
 			}
+			/*else if (strcmp(typeName, "Material") == 0) {
+
+			}*/
 		}
 	}
 }
@@ -126,15 +129,16 @@ void GameObject::Deserialize(const nlohmann::json& j)
 				comp->Deserialize(compJson.at("data"));
 			}
 		}
-		else
-		{
-			// 없으면 새로 생성 후 추가
-			auto comp = ComponentFactory::Instance().Create(typeName);
-			if (comp)
-			{
-				comp->Deserialize(compJson.at("data"));
-				AddComponent(std::move(comp));
-			}
-		}
+		//else
+		//{	
+		//	// 없으면 새로 생성 후 추가
+		//	// Component 생성
+		//	auto comp = ComponentFactory::Instance().Create(typeName);
+		//	if (comp)
+		//	{
+		//		comp->Deserialize(compJson.at("data"));
+		//		AddComponent(std::move(comp));
+		//	}
+		//}
 	}
 }

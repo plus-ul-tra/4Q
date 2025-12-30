@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "Component.h"
 #include "RenderData.h"
-
+#include "Reflection.h"
 class TransformComponent;
 
 class MeshRenderer : public Component
@@ -10,7 +10,7 @@ class MeshRenderer : public Component
 
 public:
 	static constexpr const char* StaticTypeName = "MeshRenderer";
-	const char* GetTypeName() const override { return StaticTypeName; }
+	const char* GetTypeName() const override; // 매크로에서 정의 및 사용
 	
 	MeshRenderer() = default;
 	virtual ~MeshRenderer() = default;

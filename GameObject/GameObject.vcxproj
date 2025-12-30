@@ -247,6 +247,7 @@
     <ClInclude Include="MeshComponent.h" />
     <ClInclude Include="MeshRenderer.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="Reflection.h" />
     <ClInclude Include="TransformComponent.h" />
     <ClInclude Include="UIComponent.h" />
     <ClInclude Include="UIObject.h" />
@@ -260,6 +261,7 @@
     <ClCompile Include="MeshComponent.cpp" />
     <ClCompile Include="MeshRenderer.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="Reflection.cpp" />
     <ClCompile Include="TransformComponent.cpp" />
     <ClCompile Include="UIComponent.cpp" />
     <ClCompile Include="UIObject.cpp" />
