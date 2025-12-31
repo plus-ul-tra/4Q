@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Component.h"
 #include "RenderData.h"
 
@@ -35,6 +35,3 @@ protected:
 	RenderData::MaterialData m_Overrides;
 	bool m_UseOverrides = false;
 };
-
-
-

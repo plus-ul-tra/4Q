@@ -37,6 +37,9 @@
     <ClCompile Include="Reflection.cpp">
       <Filter>Reflection</Filter>
     </ClCompile>
+    <ClCompile Include="ComponentRegistration.cpp">
+      <Filter>Components\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component.h">

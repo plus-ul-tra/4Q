@@ -1,4 +1,4 @@
-#include "TransformComponent.h"
+﻿#include "TransformComponent.h"
 #include "Event.h"
 #include <cassert>
 #include "ReflectionMacro.h"
@@ -182,8 +182,4 @@ void TransformComponent::UpdateMatrices()
 
 	m_IsDirty = false;
 }
-
-void LinkEngineComponents()
-{
-	// 비워도 됨
-}
+ // symbol 연결 용

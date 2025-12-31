@@ -1,5 +1,8 @@
 ﻿#include "LightComponent.h"
 #include "MathHelper.h"
+#include "ReflectionMacro.h"
+
+REGISTER_COMPONENT(LightComponent)
 using namespace MathUtils;
 
 LightComponent::LightComponent::LightComponent()

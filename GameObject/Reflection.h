@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <iostream>
 #include <string>
 #include <unordered_map>
@@ -62,7 +62,7 @@ using namespace std;
 	using ComponentCreateFunc = function<unique_ptr<Component>()>;
 
 	struct ComponentTypeInfo {
-		string name;  // 컴포넌트 이름
+		string name;  // 컴포넌트 이름 TransformComponent
 		ComponentCreateFunc factory;
 		vector<unique_ptr<Property>> properties; // 컴포넌트가 가지고 있는 Property(변수 등)
 	};
@@ -85,11 +85,8 @@ using namespace std;
 	private:
 		unordered_map<string, ComponentTypeInfo*> m_Types; //이름 : 컴포넌트
 	};
+	// 게임에서 정의된 컴포넌트 들과 프로퍼티 (사전) -> Component List
 
+	// 오브젝트 - Com1, 2, 3, 4
 
-//등록 메크로
-//#define REGISTER_PROPERTY(TYPE, FIELD) \
-//	TYPE##_TypeInfo.properties.emplace_back( \
-//	std::make_unique<MemberProperty<TYPE, decltype(TYPE::FIELD)>>( \
-//	#FIELD, &TYPE::FIELD \
-//	));
+	

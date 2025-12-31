@@ -1,4 +1,7 @@
-#include "UIComponent.h"
+﻿#include "UIComponent.h"
+#include "ReflectionMacro.h"
+
+REGISTER_COMPONENT(UIComponent)
 
 void UIComponent::Update(float deltaTime)
 {

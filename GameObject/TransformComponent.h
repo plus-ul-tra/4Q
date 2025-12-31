@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Component.h"
 #include "MathHelper.h"
 using namespace MathUtils;
@@ -42,7 +42,7 @@ public:
 
 	void SetPosition(const XMFLOAT3& pos) { m_Position = pos; SetDirty(); }
 	void SetRotation(const XMFLOAT4& rot) { m_Rotation = rot; SetDirty(); }
-	void SetScale(const XMFLOAT3& scale) { m_Scale = scale; SetDirty(); }
+	void SetScale(const XMFLOAT3& scale) {  m_Scale = scale; SetDirty();  }
 	
 	const XMFLOAT3& GetPosition() const { return m_Position; }
 	const XMFLOAT4& GetRotation() const { return m_Rotation; }
@@ -106,4 +106,5 @@ private:
 
 //REGISTER_PROPERTY (TransformComponent, posX)
 
-
+// json 저장, editorUI 조작할거
+// parent

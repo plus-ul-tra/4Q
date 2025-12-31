@@ -3,7 +3,9 @@
 #include "MeshComponent.h"
 #include "MaterialComponent.h"
 #include "Object.h"
+#include "ReflectionMacro.h"
 
+REGISTER_COMPONENT(MeshRenderer)
 bool MeshRenderer::BuildRenderItem(RenderData::RenderItem& out) const
 {
 	if (!m_Visible)

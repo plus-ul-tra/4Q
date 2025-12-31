@@ -1,5 +1,7 @@
 ﻿#include "CameraComponent.h"
+#include "ReflectionMacro.h"
 
+REGISTER_COMPONENT(CameraComponent)
 void CameraComponent::RebuildViewIfDirty()
 {
 	if (!m_ViewDirty) return;
