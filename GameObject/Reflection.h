@@ -1,14 +1,19 @@
-﻿#pragma once
+#pragma once
 #include <iostream>
 #include <string>
 #include <unordered_map>
 #include <vector>
 #include <functional>
+#include "MathHelper.h"
+#include "Serializer.h"
 #include "Component.h"
 #include "json.hpp"
 
 using namespace std;
-
+using namespace MathUtils;
+	
+	/// 모든 데이터 type에 대해 어떻게 역직/직렬화 될지에 대해 정해줘야 함.
+	
 
 	class Property {
 	public:
@@ -17,7 +22,7 @@ using namespace std;
 
 		const string& GetName() const { return m_Name; }
 
-		virtual void DrawEditor(Component* c) const;
+		//virtual void DrawEditor(Component* c) const;
 		virtual void Serialize(Component* c, nlohmann::json& j) const = 0;
 		virtual void DeSerialize(Component* c, const nlohmann::json& j) const = 0;
 
@@ -25,36 +30,72 @@ using namespace std;
 		std::string m_Name;
 	};
 
+	//////
+	// 멤버 직접 접근 public 멤버만 가능 (아마 쓸일 없음)
+	//template<typename T, typename Field>
+	//class MemberProperty : public Property {
+	//public:
+	//	using MemberPtr = Field T::*;
+	//
+	//	MemberProperty(const char* name, MemberPtr member)
+	//		: Property(name), m_Member(member) {
+	//	}
+	//
+	//	//void DrawEditor(Component* c) const override {
+	//	//	T* obj = static_cast<T*>(c);
+	//	//	Editor::Draw(GetName().c_str(), obj->*m_Member);
+	//	//}
+	//
+	//	void Serialize(Component* c, nlohmann::json& j) const override
+	//	{
+	//		T* obj = static_cast<T*>(c);
+	//		j[GetName()] = obj->*m_Member;
+	//	}
+	//
+	//	void DeSerialize(Component* c, const nlohmann::json& j) const override
+	//	{
+	//		if (!j.contains(GetName())) return;
+	//		T* obj = static_cast<T*>(c);
+	//		obj->*m_Member = j[GetName()].get<Field>();
+	//	}
+	//
+	//private:
+	//	MemberPtr m_Member;
+	//};
 
-	template<typename T, typename Field>
-	class MemberProperty : public Property {
+
+	////
+	//Getter, Setter 사용
+	template<typename T, typename Value>
+	class AccessorProperty : public Property {
 	public:
-		using MemberPtr = Field T::*;
+		using Getter = const Value& (T::*)() const;
+		using Setter = void (T::*)(const Value&);
 
-		MemberProperty(const char* name, MemberPtr member)
-			: Property(name), m_Member(member) {
+		template<typename G, typename S>
+		AccessorProperty(const char* name, G g, S s)
+			: Property(name)
+			, m_Get(reinterpret_cast<Getter>(g))
+			, m_Set(reinterpret_cast<Setter>(s))
+		{
 		}
 
-		//void DrawEditor(Component* c) const override {
-		//	T* obj = static_cast<T*>(c);
-		//	Editor::Draw(GetName().c_str(), obj->*m_Member);
-		//}
-
-		void Serialize(Component* c, nlohmann::json& j) const override
-		{
+		void Serialize(Component* c, nlohmann::json& j) const override {
 			T* obj = static_cast<T*>(c);
-			j[GetName()] = obj->*m_Member;
+			Serializer<Value>::ToJson(j[GetName()], (obj->*m_Get)());
 		}
 
-		void DeSerialize(Component* c, const nlohmann::json& j) const override
-		{
+		void DeSerialize(Component* c, const nlohmann::json& j) const override {
 			if (!j.contains(GetName())) return;
 			T* obj = static_cast<T*>(c);
-			obj->*m_Member = j[GetName()].get<Field>();
+			Value v{};
+			Serializer<Value>::FromJson(j[GetName()], v);
+			(obj->*m_Set)(v);
 		}
 
 	private:
-		MemberPtr m_Member;
+		Getter m_Get;
+		Setter m_Set;
 	};
 
 
@@ -78,15 +119,23 @@ using namespace std;
 			return (it != m_Types.end()) ? it->second : nullptr;
 		}
 		void Check() {
-			for (const auto& a : m_Types) {
-				cout << a.first << endl;
+			//개발 확인용
+			for (const auto& [name, typeInfo] : m_Types) {
+				std::cout << "Component: " << name << std::endl;
+
+				if (!typeInfo) {
+					std::cout << "  (TypeInfo is null)" << std::endl;
+					continue;
+				}
+
+				for (const auto& prop : typeInfo->properties) {
+					std::cout << "    Property: " << prop->GetName() << std::endl;
+				}
 			}
 		}
 	private:
 		unordered_map<string, ComponentTypeInfo*> m_Types; //이름 : 컴포넌트
 	};
 	// 게임에서 정의된 컴포넌트 들과 프로퍼티 (사전) -> Component List
-
-	// 오브젝트 - Com1, 2, 3, 4
 
 	

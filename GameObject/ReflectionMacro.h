@@ -1,4 +1,5 @@
-﻿#pragma once
+#pragma once
+//#include <type_traits>
 #include "Reflection.h"
 //매크로만 등록 하는 곳
 // *** 매크로는 단순 문자 치환으로 띄어쓰기 줄바꿈에 매우 민감. 겨우 띄어쓰기 하나땜에 안될 수 있음
@@ -35,11 +36,24 @@
 // private 어캐 함? Get
 // float3  어캐 할 거냐
 // parent
-#define REGISTER_PROPERTY(TYPE, FIELD) \
-    static bool TYPE##_##FIELD##_registered = [](){ \
-    TYPE##_TypeInfo.properties.emplace_back( \
-    std::make_unique<MemberProperty<TYPE, decltype(TYPE::FIELD)>>( \
-    #FIELD, &TYPE::FIELD \
-	)); \
-    return true; \
+//#define REGISTER_PROPERTY(TYPE, FIELD) \
+//    static bool TYPE##_##FIELD##_registered = [](){ \
+//    TYPE##_TypeInfo.properties.emplace_back( \
+//    std::make_unique<MemberProperty<TYPE, decltype(TYPE::FIELD)>>( \
+//    #FIELD, &TYPE::FIELD \
+//	)); \
+//    return true; \
+//    }();
+
+
+#define REGISTER_PROPERTY(TYPE, NAME)\
+    static bool TYPE##_##NAME##_registered = [](){\
+    using RawReturn = decltype(std::declval<TYPE>().Get##NAME());\
+    using ValueType = std::remove_cvref_t<RawReturn>; \
+    TYPE##_TypeInfo.properties.emplace_back(\
+    std::make_unique<AccessorProperty<TYPE, ValueType>>(\
+    #NAME, &TYPE::Get##NAME, &TYPE::Set##NAME\
+    )\
+    );\
+    return true;\
     }();

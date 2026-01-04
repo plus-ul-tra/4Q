@@ -85,6 +85,9 @@
     <ClInclude Include="ReflectionMacro.h">
       <Filter>Reflection</Filter>
     </ClInclude>
+    <ClInclude Include="Serializer.h">
+      <Filter>Reflection</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Components">

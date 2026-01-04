@@ -1,4 +1,4 @@
-﻿#include "pch.h"
+#include "pch.h"
 #include "GameApplication.h"
 #include "GameObject.h"
 #include "Reflection.h"
@@ -94,7 +94,7 @@ void GameApplication::Update()
 {
 #ifndef _EDITOR
 	//std::cout << "run" << std::endl;
-	//ComponentRegistry::Instance().Check();
+	ComponentRegistry::Instance().Check();
 	m_SceneManager.Update(m_Engine.GetTimer().DeltaTime());
 	m_SoundManager.Update();
 	// FixedUpdate

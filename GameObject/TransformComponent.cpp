@@ -1,9 +1,15 @@
-﻿#include "TransformComponent.h"
+#include "TransformComponent.h"
 #include "Event.h"
 #include <cassert>
+#include <utility>
+#include <type_traits>
 #include "ReflectionMacro.h"
 
-REGISTER_COMPONENT(TransformComponent)
+REGISTER_COMPONENT(TransformComponent)  //컴포넌트 등록
+// 컴포넌트 property 등록 **이름 주의**
+REGISTER_PROPERTY(TransformComponent, Position)
+REGISTER_PROPERTY(TransformComponent, Rotation)
+REGISTER_PROPERTY(TransformComponent, Scale)
 
 void TransformComponent::SetParent(TransformComponent* newParent)
 {
@@ -26,7 +32,12 @@ void TransformComponent::DetachFromParent()
 
 	SetDirty();
 }
-
+//void TransformComponent::SetPosition(const XMFLOAT3& pos) {
+//	m_Position = pos; SetDirty();
+//}
+//const XMFLOAT3& TransformComponent::GetPosition()const {
+//	return m_Position;
+//}
 void TransformComponent::AddChild(TransformComponent* child)
 {
 	XMFLOAT4X4 childLocalTM = child->GetLocalMatrix();

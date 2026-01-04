@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include "Component.h"
 #include "MathHelper.h"
 using namespace MathUtils;
@@ -100,11 +100,6 @@ private:
 
 	XMFLOAT4X4 m_LocalMatrix;
 	XMFLOAT4X4 m_WorldMatrix;
-	float posX = 0.0f;
+	float posX = 0.0f; // 테스트용임 추후 삭제
 	
 };
-
-//REGISTER_PROPERTY (TransformComponent, posX)
-
-// json 저장, editorUI 조작할거
-// parent

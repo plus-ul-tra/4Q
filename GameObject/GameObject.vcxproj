@@ -184,7 +184,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)Common;$(SolutionDir)AI;$(SolutionDir)Event; $(SolutionDir)Engine; $(SolutionDir)Client;$(SolutionDir)SoundSystem; $(SolutionDir)ThirdParty\FMOD\inc; $(SolutionDir)ResourceManager;</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -249,6 +249,7 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="Reflection.h" />
     <ClInclude Include="ReflectionMacro.h" />
+    <ClInclude Include="Serializer.h" />
     <ClInclude Include="TransformComponent.h" />
     <ClInclude Include="UIComponent.h" />
     <ClInclude Include="UIObject.h" />
